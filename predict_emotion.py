@@ -2,6 +2,12 @@ import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 
+try:
+    model = load_model("emotion_model.h5")
+except Exception as e:
+    print(f"Warning: could not load model: {e}")
+    model = None
+
 IMG_SIZE = 48
 LABELS = ["angry", "happy", "neutral", "sad", "surprise"]
 
@@ -9,6 +15,8 @@ model = load_model("emotion_model.h5")
 
 
 def predict_emotion(image_path):
+    if model is None:
+        return "model_missing", 0.0
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
     if img is None:

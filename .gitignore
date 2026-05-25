@@ -1,0 +1,18 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Editor settings
+.vscode/
+
+# Uploaded files and dataset
+uploads/
+dataset/
+
+# Large model files (uncomment to ignore if you want to track models)
+*.h5

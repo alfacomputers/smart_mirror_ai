@@ -4,6 +4,7 @@ import cv2
 import threading
 import numpy as np
 from tensorflow.keras.models import load_model
+import time
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -11,7 +12,11 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 IMG_SIZE = 48
 LABELS = ["angry", "happy", "neutral", "sad", "surprise"]
 
-model = load_model("emotion_model.h5")
+try:
+    model = load_model("emotion_model.h5")
+except Exception as e:
+    print(f"Warning: could not load model: {e}")
+    model = None
 
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
@@ -23,6 +28,8 @@ lock = threading.Lock()
 
 
 def predict_face_emotion(face_gray):
+    if model is None:
+        return "model_missing", 0.0
     face = cv2.resize(face_gray, (IMG_SIZE, IMG_SIZE))
     face = face.astype("float32") / 255.0
     face = np.expand_dims(face, axis=-1)
@@ -95,6 +102,8 @@ def generate_frames():
     while True:
         with lock:
             if latest_frame is None:
+                # avoid busy spin when no frame is available
+                time.sleep(0.05)
                 continue
             frame = latest_frame.copy()
 

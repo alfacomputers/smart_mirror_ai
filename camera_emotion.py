@@ -5,12 +5,20 @@ from tensorflow.keras.models import load_model
 IMG_SIZE = 48
 LABELS = ["angry", "happy", "neutral", "sad", "surprise"]
 
-model = load_model("emotion_model.h5")
+try:
+    model = load_model("emotion_model.h5")
+except Exception as e:
+    print(f"Warning: could not load model: {e}")
+    model = None
 
 # face detector جاهز من OpenCV
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
+
+if model is None:
+    print("Model not loaded; exiting.")
+    exit(1)
 
 cap = cv2.VideoCapture(0)
 
