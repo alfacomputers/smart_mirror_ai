@@ -15,6 +15,7 @@ dependencies = [
     "flask>=2.3",
     "pillow>=10.0",
     "flask-cors>=6.0.2",
+    "cv2",
 ]
 
 [project.optional-dependencies]
