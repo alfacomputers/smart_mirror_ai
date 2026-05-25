@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: smart-mirror-ai
+Version: 0.1.0
+Summary: Emotion detection AI for Smart Mirror system
+Requires-Python: <3.14,>=3.10
+Requires-Dist: tensorflow<3,>=2.10
+Requires-Dist: opencv-python>=4.8
+Requires-Dist: numpy>=1.24
+Requires-Dist: keras>=2.13
+Requires-Dist: flask>=2.3
+Requires-Dist: pillow>=10.0
+Requires-Dist: flask-cors>=6.0.2
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"
+Requires-Dist: pytest-cov>=4.1; extra == "dev"

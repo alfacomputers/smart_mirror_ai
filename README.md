@@ -4,8 +4,20 @@ Minimal emotion-detection project for a smart mirror. Contains scripts to train 
 
 ## Quick install
 
-Create a virtual environment and install dependencies:
+Using [uv](https://github.com/astral-sh/uv) as the package manager (fast and reliable):
 
+```powershell
+# Sync dependencies (creates venv + installs)
+python -m uv sync
+
+# Activate the virtual environment
+.\.venv\Scripts\activate
+
+# Or use uv run directly
+python -m uv run python app.py
+```
+
+For traditional pip (slower):
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
