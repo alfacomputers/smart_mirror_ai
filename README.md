@@ -4,23 +4,30 @@ Minimal emotion-detection project for a smart mirror. Contains scripts to train 
 
 ## Quick install
 
-Using [uv](https://github.com/astral-sh/uv) as the package manager (fast and reliable):
+On Linux, the recommended bootstrap script is:
 
-```powershell
-# Sync dependencies (creates venv + installs)
-python -m uv sync
-
-# Activate the virtual environment
-.\.venv\Scripts\activate
-
-# Or use uv run directly
-python -m uv run python app.py
+```bash
+./scripts/bootstrap.sh
 ```
 
+To install the Ubuntu/Debian system packages as well, run:
+
+```bash
+sudo ./scripts/bootstrap.sh --install-system
+```
+
+Then activate the environment:
+
+```bash
+source .venv/bin/activate
+```
+
+> Note: On older CPUs without AVX support (for example Intel Celeron N4000), official TensorFlow wheels may fail with an illegal instruction. The project can still bootstrap, but model loading may require a compatible CPU or a custom TensorFlow build.
+
 For traditional pip (slower):
-```powershell
+```bash
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 

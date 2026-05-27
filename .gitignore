@@ -1,18 +1,32 @@
-# Byte-compiled / cache
+# Python bytecode
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
 
 # Virtual environments
+.venv/
 venv/
 env/
+
+# Environment and secret files
 .env
+.env.*
 
 # Editor settings
 .vscode/
+.idea/
 
-# Uploaded files and dataset
+# Uploaded files, dataset and models
 uploads/
 dataset/
-
-# Large model files (uncomment to ignore if you want to track models)
 *.h5
+*.hdf5
+*.pth
+*.ckpt
+
+# Packaging/runtime artifacts
+*.log
+*.tmp
+*.cache
+.venv/

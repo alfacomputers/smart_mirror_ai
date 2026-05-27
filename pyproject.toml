@@ -8,10 +8,9 @@ version = "0.1.0"
 description = "Emotion detection AI for Smart Mirror system"
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "tensorflow>=2.10,<3",
+    "onnxruntime>=1.15.0",
     "opencv-python>=4.8",
     "numpy>=1.24",
-    "keras>=2.13",
     "flask>=2.3",
     "pillow>=10.0",
     "flask-cors>=6.0.2",
